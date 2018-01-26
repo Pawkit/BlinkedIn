@@ -16,12 +16,16 @@ app.use(routes);
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://heroku_z4d6l9gg:4upl5gd8qb2t45nnjk455cmrl8@ds011231.mlab.com:11231/heroku_z4d6l9gg",
-  {
-    useMongoClient: true
-  }
-);
+mongoose.connect("mongodb://heroku_z4d6l9gg:4upl5gd8qb2t45nnjk455cmrl8@ds011231.mlab.com:11231/heroku_z4d6l9gg");
+// mongoose.connect(
+//   process.env.MONGODB_URI || "mongodb://heroku_z4d6l9gg:4upl5gd8qb2t45nnjk455cmrl8@ds011231.mlab.com:11231/heroku_z4d6l9gg",
+//   MONGODB_URI: 
+
+  
+//   {
+//     useMongoClient: true
+//   }
+// );
 
 // Start the API server
 app.listen(process.env.PORT || 8080, function() {
