@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://heroku_z4d6l9gg:4upl5gd8qb2t45nnjk455cmrl8@ds011231.mlab.com:11231/heroku_z4d6l9gg');
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -18,7 +17,7 @@ app.use(routes);
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist",
+  process.env.MONGODB_URI || "mongodb://heroku_z4d6l9gg:4upl5gd8qb2t45nnjk455cmrl8@ds011231.mlab.com:11231/heroku_z4d6l9gg",
   {
     useMongoClient: true
   }
