@@ -1,0 +1,19 @@
+#signin {
+	text-align: center;
+	background-color: transparent;
+	color: black;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-top: 15%;
+}
+
+#linkedin_button {
+	padding: 20px;
+}
+
+body {
+	background: url("./notebook.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
