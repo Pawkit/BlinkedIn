@@ -169,7 +169,7 @@ class JobModal extends React.PureComponent {
             className="my-2"
             type="text"
             name="title"
-            placeholder="your job title here..."
+            placeholder="Title"
             value={title}
             valid={title.length !== 0 || !submitted}
             onChange={this.handleInputChange}
@@ -178,7 +178,7 @@ class JobModal extends React.PureComponent {
             className="my-2"
             type="text"
             name="company"
-            placeholder="your company name here..."
+            placeholder="Company"
             value={company}
             valid={company.length !== 0 || !submitted}
             onChange={this.handleInputChange}
@@ -187,6 +187,7 @@ class JobModal extends React.PureComponent {
             className="my-2"
             type="number"
             name="salary"
+            placeholder="Salary"
             value={salary}
             valid={salary > 0 || !submitted}
             onChange={this.handleInputChange}
@@ -195,7 +196,7 @@ class JobModal extends React.PureComponent {
             className="my-2"
             type="textarea"
             name="notes"
-            placeholder="your job description here..."
+            placeholder="Description"
             value={notes}
             valid={notes.length !== 0 || !submitted}
             onChange={this.handleInputChange}
