@@ -1,0 +1,34 @@
+.full-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#auth-form {
+  width: 340px;
+  border-radius: 5px;
+  border: 1px solid #d8762655;
+  box-shadow: 0 3px 5px #e7494415;
+}
+
+#signin {
+	text-align: center;
+	background-color: transparent;
+	color: black;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-top: 15%;
+}
+
+#linkedin_button {
+	padding: 20px;
+}
+
+body {
+	background: url("/notebook.jpeg");
+	background-size: 100%;
+	/*background: lightgrey;*/
+    background-repeat: no-repeat;
+}
