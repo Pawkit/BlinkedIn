@@ -48,6 +48,8 @@ class JobModal extends React.PureComponent {
         isOpen: true,
         type: 'create',
       });
+      // clears job modal form
+      this.clearJob();
     } else if (modal.type === 'editJob') {
       this.setState({
         isOpen: true,
@@ -55,11 +57,6 @@ class JobModal extends React.PureComponent {
         ...modal.job,
       });
     }
-  }
-
-  onClose = () => {
-    this.setState({ isOpen: false });
-    this.props.hideModal();
   }
 
   onSave = () => {
@@ -107,6 +104,8 @@ class JobModal extends React.PureComponent {
             status: 'success',
             isOpen: false,
           });
+
+
           this.props.hideModal({ status: 'success' });
         }).catch((err) => {
           this.setState({
@@ -115,6 +114,16 @@ class JobModal extends React.PureComponent {
           });
         });
       }
+    });
+  }
+
+  // clears job from being selected
+  clearJob() {
+    this.setState({
+      company: '',
+      title: '',
+      salary: 0,
+      notes: '',
     });
   }
 
