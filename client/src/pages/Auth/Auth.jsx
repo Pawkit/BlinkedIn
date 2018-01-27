@@ -189,6 +189,9 @@ class Auth extends Component {
           >
             Submit
           </Button>
+          <div  id="signin">
+            <script type="in/Login" id="linkedin_button"></script>
+          </div>
         </Form>
       </div>
     );
