@@ -5,29 +5,35 @@
   bottom: 0;
   left: 0;
 }
-
+/* Log in form */
+/* label.my-3.display-4.form-control-label {
+  font-size: 2.8em;
+  font-weight: 600;
+  letter-spacing: .5em;
+  color: #e06245 !important;
+  font-family: Proxima-Nova, sans-serif !important;
+  text-transform: uppercase;
+} */
 #auth-form {
   width: 340px;
-  border-radius: 5px;
-  border: 1px solid #d8762655;
-  box-shadow: 0 3px 5px #e7494415;
+  border-radius: 0px;
 }
 
 #signin {
 	text-align: center;
 	background-color: transparent;
-	color: black;
+	color: #433a3b;
 	margin-left: 15%;
 	margin-right: 15%;
 	margin-top: 15%;
 }
-
+/* 
 #linkedin_button {
 	padding: 20px;
-}
+} */
 
 body {
-	background: url("/notebook.jpeg");
+	/* background: url("/notebook.jpeg"); */
 	background-size: 100%;
 	/*background: lightgrey;*/
     background-repeat: no-repeat;
