@@ -18,13 +18,20 @@
         authorize: false
         onLoad: onLinkedInLoad
     </script>
+     <!-- linkedin customized button  -->
+     <div id="wLinkedin">
+       <a href="#" onClick="onLinkedInLoad();">
+         <span id="icon-bg"><i class="fa fa-linkedin"></i></span>
+         <span id="icon-label-bg">Login with LinkedIn</span>
+           </a>
+          </div>
     <script type="text/javascript">
-      
+
       // Setup an event listener to make an API call once auth is complete
       function onLinkedInLoad() {
           IN.Event.on(IN, "auth", getProfileData);
-          //$('a[id*=li_ui_li_gen_]').css({marginBottom:'20px'}) 
-          //.html('<img src="/images/shared/linkedin-register-large.png" height="31" width="200" border="0" />');    
+          // $('a[id*=li_ui_li_gen_]').css({marginBottom:'20px'})
+          // .html('<img src="/images/shared/linkedin-register-large.png" height="31" width="200" border="0" />');
       }
 
       // Handle the successful return from the API call
