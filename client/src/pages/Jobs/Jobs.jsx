@@ -9,6 +9,7 @@ import swal from 'sweetalert2';
 import Nav from '../../components/Nav';
 import JobModal from '../../modals/Job';
 import API from '../../utils/API';
+import { getCalendarLink } from '../../utils/gcal';
 
 import { showModal, hideModal } from '../../actions';
 
@@ -45,8 +46,8 @@ class Jobs extends Component {
 
   onRemove = (job) => {
     swal({
-      title: 'You really want to remove this Job?',
-      text: `We are going to remove "${job.title}" and this can't be undone. You sure about this?`,
+      title: 'Do you really want to remove this Job?',
+      text: `We are going to remove "${job.title}" and this can't be undone. Are you sure?`,
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -111,7 +112,7 @@ class Jobs extends Component {
         <Nav />
         <JobModal />
         <Container className="jobPanel p-3 my-4">
-          <h1 className="text-center p-3" >Your Jobs are here.</h1>
+          <h1 className="text-center p-3" >Your Dashboard</h1>
           {
             status === 'error' &&
             <p>{message}</p>
@@ -129,6 +130,15 @@ class Jobs extends Component {
                       job.uid === uid &&
                       <Col className="ml-auto">
                         <Row className="h-100 justify-content-end align-items-center">
+                          <a href={getCalendarLink(job)} target="_blank">
+                          <Button
+                            className="mx-2"
+                            onClick={() => {return false;}}
+                            color="success"
+                          >
+                            Add to calendar
+                          </Button>
+                          </a>
                           <Button
                             className="mx-2"
                             color="warning"

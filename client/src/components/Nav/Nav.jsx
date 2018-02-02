@@ -36,8 +36,8 @@ class Header extends React.PureComponent {
 
   render() {
     return (
-      <Container className="p-0" fluid>
-        <Navbar color="dark" dark expand="md">
+      <Container className="p-0">
+        <Navbar color="dark" dark expand="md" >
           <NavbarBrand href="/">Blinked In</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
