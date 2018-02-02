@@ -64,6 +64,9 @@ a {
 /* username display */
 .p-4 {margin-top: 10px;}
 /* button inline */
-.DashButton {display: inline;}
-.btn.btn-link {color: #433a3b !important;text-decoration: none;}
-.btn.btn-link:hover{color:#e06245 !important; font-weight: 600;}
+.DashButton{display: inline !important;}
+.DashButton::selection{color:#e06245;}
+.btn.btn-link:active{color:#e06245 !important;}
+.btn.btn-link {color: #433a3b !important; text-decoration: none;}
+/* .btn.btn-link:hover{color:#e06245 !important; font-weight: 600;} */
+.btn.btn-link:active, .btn.btn-link:focus{color:#e06245 !important;font-weight: 600;}
