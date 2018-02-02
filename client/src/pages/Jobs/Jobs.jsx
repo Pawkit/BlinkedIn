@@ -143,8 +143,6 @@ class Jobs extends Component {
                         </Col>
                           <Col className="ml-auto">
                             <Row className="h-100 justify-content-end align-items-center">
-                              {
-                                job.uid === uid &&
                                 <Button
                                   className="mx-2"
                                   color="warning"
@@ -153,9 +151,6 @@ class Jobs extends Component {
                                 >
                                   Edit
                                 </Button>
-                              }
-                              {
-                                job.uid === uid &&
                                 <Button
                                   className="mx-2"
                                   color="danger"
@@ -164,7 +159,6 @@ class Jobs extends Component {
                                 >
                                   Remove
                                 </Button>
-                              }
                               <a href={getCalendarLink(job)} target="_blank">
                               <Button
                                 className="mx-2"
@@ -222,28 +216,6 @@ class Jobs extends Component {
                         </Col>
                           <Col className="ml-auto">
                             <Row className="h-100 justify-content-end align-items-center">
-                              {
-                                job.uid === uid &&
-                                <Button
-                                  className="mx-2"
-                                  color="warning"
-                                  onClick={() => this.onEdit(job)}
-                                  disabled={status === 'saving'}
-                                >
-                                  Edit
-                                </Button>
-                              }
-                              {
-                                job.uid === uid &&
-                                <Button
-                                  className="mx-2"
-                                  color="danger"
-                                  onClick={() => this.onRemove(job)}
-                                  disabled={status === 'saving'}
-                                >
-                                  Remove
-                                </Button>
-                              }
                               <a href={getCalendarLink(job)} target="_blank">
                               <Button
                                 className="mx-2"
