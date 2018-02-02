@@ -5,6 +5,7 @@
   bottom: 0;
   left: 0;
 }
+body{background:url("/texture.jpg");background-size:100%;background-repeat:repeat}
 /* Log in form */
 /* label.my-3.display-4.form-control-label {
   font-size: 2.8em;
