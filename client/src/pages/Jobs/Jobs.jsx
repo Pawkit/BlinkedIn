@@ -9,7 +9,7 @@ import swal from 'sweetalert2';
 import Nav from '../../components/Nav';
 import JobModal from '../../modals/Job';
 import API from '../../utils/API';
-import { getCalendarLink } from '../../utils/gcal';
+// import { getCalendarLink } from '../../utils/gcal';
 
 import { showModal, hideModal } from '../../actions';
 
@@ -39,10 +39,6 @@ class Jobs extends Component {
     }
   }
 
-  onEdit = (job) => {
-    this.props.showModal({ type: 'editJob', job });
-  }
-
   onRemove = (job) => {
     swal({
       title: 'Do you really want to remove this Job?',
@@ -67,7 +63,7 @@ class Jobs extends Component {
   }
 
   loadJobs = () => {
-    API.getJobs()
+    API.getMyJobs(this.props.auth.uid)
       .then((res) => {
         this.setState({
           status: 'idle',
@@ -84,7 +80,7 @@ class Jobs extends Component {
 
   render() {
     const { jobs, status, message } = this.state;
-    const { uid } = this.props.auth;
+    const { showModal } = this.props;
 
     return (
       <div className="full-content">
@@ -103,40 +99,36 @@ class Jobs extends Component {
                   <Row>
                     <Col>
                       <CardTitle>{job.title}</CardTitle>
-                      <CardSubtitle>{job.company}</CardSubtitle>
+                      <CardSubtitle>{job.companyName}</CardSubtitle>
                     </Col>
-                    {
-                      job.uid === uid &&
-                      <Col className="ml-auto">
-                        <Row className="h-100 justify-content-end align-items-center">
-                          <a href={getCalendarLink(job)} target="_blank">
-                          <Button
-                            className="mx-2"
-                            onClick={() => {return false;}}
-                            color="success"
-                          >
-                            Add to calendar
-                          </Button>
-                          </a>
-                          <Button
-                            className="mx-2"
-                            color="warning"
-                            onClick={() => this.onEdit(job)}
-                            disabled={status === 'saving'}
-                          >
-                            Edit
-                          </Button>
-                          <Button
-                            className="mx-2"
-                            color="danger"
-                            onClick={() => this.onRemove(job)}
-                            disabled={status === 'saving'}
-                          >
-                            Remove
-                          </Button>
-                        </Row>
-                      </Col>
-                    }
+                    <Col className="ml-auto">
+                      <Row className="h-100 justify-content-end align-items-center">
+                        <Button
+                          className="mx-2"
+                          color="success"
+                          onClick={() => showModal({ type: 'viewJob', job })}
+                          disabled={status === 'saving'}
+                        >
+                          View
+                        </Button>
+                        <Button
+                          className="mx-2"
+                          color="warning"
+                          onClick={() => showModal({ type: 'editJob', job })}
+                          disabled={status === 'saving'}
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          className="mx-2"
+                          color="danger"
+                          onClick={() => this.onRemove(job)}
+                          disabled={status === 'saving'}
+                        >
+                          Remove
+                        </Button>
+                      </Row>
+                    </Col>
                   </Row>
                 </CardHeader>
                 <CardBody>
