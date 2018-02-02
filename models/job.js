@@ -6,7 +6,8 @@ const jobSchema = new Schema({
   uid: { type: String, required: true },
   company: { type: String, required: true },
   salary: { type: Number, required: true },
-  notes: String
+  notes: { type: String, required: true},
+  points: { type: Number, default: 0 }
 });
 
 const Job = mongoose.model("Job", jobSchema);

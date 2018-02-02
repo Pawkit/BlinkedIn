@@ -36,18 +36,9 @@ const bookSeed = [
     job_title: "",
     status: "",
     date: new Date(Date.now())
-  },
-  {
-    job_title: "",
-    status: "",
-    date: new Date(Date.now())
-  },
-  {
-    job_title: "",
-    status: "",
-    date: new Date(Date.now())
-  },
-  
+  }
+]
+
 db.Book
   .remove({})
   .then(() => db.Book.collection.insertMany(bookSeed))

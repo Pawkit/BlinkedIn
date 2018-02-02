@@ -13,4 +13,8 @@ router
   .put(jobsController.update)
   .delete(jobsController.remove);
 
+router.route("/upvote/:id")
+  .post(jobsController.incrementUpvote);
+//router.route("/downvote/:id", post(jobsController.incrementDownvote);
+
 module.exports = router;

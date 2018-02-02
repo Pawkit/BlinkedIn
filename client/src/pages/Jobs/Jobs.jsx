@@ -26,6 +26,7 @@ class Jobs extends Component {
     status: 'loading',
     jobs: [],
     message: '',
+    count: 0
   }
 
   componentDidMount() {
@@ -81,6 +82,25 @@ class Jobs extends Component {
       });
   }
 
+  handleClick(id) {
+    API.updateJob(id)
+      .then( res => {
+      console.log(res.data);
+    this.setState({
+      count: this.state.count + 1
+  })
+})
+}
+
+
+//store upvotes in state
+//then in res of updatejobs you want to use the saved of upvotes and increment it by 1
+//get the upvote in state and store it in the backend
+//get and put post function
+ 
+
+
+
   render() {
     const { jobs, status, message } = this.state;
     const { uid } = this.props.auth;
@@ -127,6 +147,20 @@ class Jobs extends Component {
                         </Row>
                       </Col>
                     }
+                    <Button
+                      className="mx-2"
+                      onClick={() => this.handleClick(job._id)}
+                      color="success"
+                    >
+                      Upvote
+                    </Button>
+                    <Button
+                      className="mx-2"
+                      onClick={() => {return false;}}
+                      color="success"
+                    >
+                      Downvote
+                    </Button>
                   </Row>
                 </CardHeader>
                 <CardBody>
@@ -140,6 +174,8 @@ class Jobs extends Component {
     );
   }
 }
+
+
 
 const mapStateToProps = state => ({
   auth: state.auth,
