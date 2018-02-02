@@ -4,7 +4,7 @@
   box-shadow: 0 3px 5px #e7494415;
 } */
 /* dashboard */
-.text-center.p-3 {letter-spacing: .13em;height: 55px;font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;text-transform: uppercase;font-size: 25px !important;margin-bottom: .8em;color: #433a3b;font-weight: 700;}
+.text-center.p-3 {letter-spacing: .13em;height: 55px;font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;text-transform: uppercase;font-size: 25px !important;margin-bottom: 55px;margin-top: 0px;color: #433a3b;font-weight: 700;}
 .card-title {font-size:1.6em;font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;color: #433a3b;}
 .card-subtitle{color:#e06245;}
 .card-body {font-family: ff-tisa-web-pro,Georgia,Times,"Times New Roman",serif !important;}
@@ -57,4 +57,12 @@ a {
 .mx-2.btn.btn-warning:hover, .mx-2.btn.btn-danger:hover,.mx-2.btn.btn-success:hover {
   background: #433a3b !important;
   color: #eeeddf !important;
+}
+/* nav bar */
+.bg-dark {background: #e06245 !important;height: 55px;margin-top: 0px;margin-bottom: 55px;}
+/* username display */
+.p-4 {margin-top: 10px;}
+/* button inline */
+.DashButton {
+  display: inline;
 }

@@ -28,6 +28,7 @@ class JobModal extends React.PureComponent {
     const initialState = job ? { ...job } : {
       title: '',
       company: '',
+      link: '',
       salary: 0,
       notes: '',
     };
@@ -65,6 +66,7 @@ class JobModal extends React.PureComponent {
       _id,
       title,
       company,
+      link,
       salary,
       notes,
     } = this.state;
@@ -76,6 +78,7 @@ class JobModal extends React.PureComponent {
         API.createJob({
           title,
           company,
+          link,
           salary,
           notes,
           uid: this.props.auth.uid,
@@ -97,8 +100,9 @@ class JobModal extends React.PureComponent {
           _id,
           title,
           company,
+          link,
           salary,
-          notes,
+          notes
         }).then((res) => {
           this.setState({
             status: 'success',
@@ -122,6 +126,7 @@ class JobModal extends React.PureComponent {
     this.setState({
       company: '',
       title: '',
+      link: '',
       salary: 0,
       notes: '',
     });
@@ -149,6 +154,7 @@ class JobModal extends React.PureComponent {
       status,
       title,
       company,
+      link,
       salary,
       notes,
       message,
@@ -181,6 +187,15 @@ class JobModal extends React.PureComponent {
             placeholder="Company"
             value={company}
             valid={company.length !== 0 || !submitted}
+            onChange={this.handleInputChange}
+          />
+          <Input
+            className="my-2"
+            type="text"
+            name="link"
+            placeholder="Link"
+            value={link}
+            valid={link.length !== 0 || !submitted}
             onChange={this.handleInputChange}
           />
           <Input

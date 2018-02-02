@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import DashButton from '../../components/ButtonNav'
 import { Container, Card, CardTitle, CardSubtitle, CardText, Button, CardHeader, CardBody, Row, Col } from 'reactstrap';
 import swal from 'sweetalert2';
 
@@ -14,6 +14,7 @@ import { getCalendarLink } from '../../utils/gcal';
 import { showModal, hideModal } from '../../actions';
 
 import './Jobs.css';
+
 
 class Jobs extends Component {
   static propTypes = {
@@ -37,6 +38,10 @@ class Jobs extends Component {
     if (nextProps.modal.status === 'success') {
       this.loadJobs();
     }
+  }
+
+  like = (job) => {
+
   }
 
   onEdit = (job) => {
@@ -85,30 +90,58 @@ class Jobs extends Component {
   render() {
     const { jobs, status, message } = this.state;
     const { uid } = this.props.auth;
-
+    const { username } = this.props.auth;
+    // console.log('props:',this.props.auth.uid)
+    // console.log('jobs:', jobs);
     return (
       <div className="full-content">
         <Nav />
         <JobModal />
         <Container className="jobPanel p-3 my-4">
+        <h3 className="text-left p-4" >Hello, {username}!</h3>
           <h1 className="text-center p-3" >Your Dashboard</h1>
+          <DashButton text='my jobs' /><DashButton text='public'/>
           {
             status === 'error' &&
             <p>{message}</p>
           }
           {
             jobs.map(job => (
+              // {state.params.uid === job.uid ?  }
               <Card key={Math.random()} className="my-2">
                 <CardHeader>
                   <Row>
                     <Col>
-                      <CardTitle>{job.title}</CardTitle>
-                      <CardSubtitle>{job.company}</CardSubtitle>
+                      <CardTitle>{job.title}
+                      </CardTitle>
+                      <CardSubtitle><a href={job.link} target="_blank">{job.company}</a></CardSubtitle>
+                      <CardSubtitle>
+                      </CardSubtitle>
                     </Col>
-                    {
-                      job.uid === uid &&
                       <Col className="ml-auto">
                         <Row className="h-100 justify-content-end align-items-center">
+                          {
+                            job.uid === uid &&
+                            <Button
+                              className="mx-2"
+                              color="warning"
+                              onClick={() => this.onEdit(job)}
+                              disabled={status === 'saving'}
+                            >
+                              Edit
+                            </Button>
+                          }
+                          {
+                            job.uid === uid &&
+                            <Button
+                              className="mx-2"
+                              color="danger"
+                              onClick={() => this.onRemove(job)}
+                              disabled={status === 'saving'}
+                            >
+                              Remove
+                            </Button>
+                          }
                           <a href={getCalendarLink(job)} target="_blank">
                           <Button
                             className="mx-2"
@@ -118,25 +151,9 @@ class Jobs extends Component {
                             Add to calendar
                           </Button>
                           </a>
-                          <Button
-                            className="mx-2"
-                            color="warning"
-                            onClick={() => this.onEdit(job)}
-                            disabled={status === 'saving'}
-                          >
-                            Edit
-                          </Button>
-                          <Button
-                            className="mx-2"
-                            color="danger"
-                            onClick={() => this.onRemove(job)}
-                            disabled={status === 'saving'}
-                          >
-                            Remove
-                          </Button>
                         </Row>
                       </Col>
-                    }
+
                   </Row>
                 </CardHeader>
                 <CardBody>
