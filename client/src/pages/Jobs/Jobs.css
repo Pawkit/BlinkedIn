@@ -53,6 +53,7 @@ a {
 .mx-2.btn.btn-warning, .mx-2.btn.btn-danger,.mx-2.btn.btn-success {
   background: #e06245 !important;
   color: #eeeddf !important;
+  font-size: 10px;
 }
 .mx-2.btn.btn-warning:hover, .mx-2.btn.btn-danger:hover,.mx-2.btn.btn-success:hover {
   background: #433a3b !important;
@@ -63,6 +64,6 @@ a {
 /* username display */
 .p-4 {margin-top: 10px;}
 /* button inline */
-.DashButton {
-  display: inline;
-}
+.DashButton {display: inline;}
+.btn.btn-link {color: #433a3b !important;text-decoration: none;}
+.btn.btn-link:hover{color:#e06245 !important; font-weight: 600;}

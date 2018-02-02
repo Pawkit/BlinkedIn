@@ -86,21 +86,22 @@ class Jobs extends Component {
         });
       });
   }
-
   render() {
     const { jobs, status, message } = this.state;
     const { uid } = this.props.auth;
     const { username } = this.props.auth;
     // console.log('props:',this.props.auth.uid)
     // console.log('jobs:', jobs);
+
     return (
       <div className="full-content">
         <Nav />
         <JobModal />
         <Container className="jobPanel p-3 my-4">
-        <h3 className="text-left p-4" >Hello, {username}!</h3>
+        <h3 className="text-left p-4" >Hello, {username} !</h3>
           <h1 className="text-center p-3" >Your Dashboard</h1>
-          <DashButton text='my jobs' /><DashButton text='public'/>
+          <DashButton text='my jobs' />
+          <DashButton text='public' />
           {
             status === 'error' &&
             <p>{message}</p>
@@ -153,8 +154,7 @@ class Jobs extends Component {
                           </a>
                         </Row>
                       </Col>
-
-                  </Row>
+                                                    </Row>
                 </CardHeader>
                 <CardBody>
                   <CardText>{job.notes}</CardText>
