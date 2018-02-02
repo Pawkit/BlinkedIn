@@ -92,20 +92,14 @@ class Jobs extends Component {
     this.setState({
       jobView: 'myJob'
     });
-<<<<<<< HEAD
     console.log(this.state.jobView);
-=======
->>>>>>> b6c3c3e7cd20c8228335773e02908bdd974c7dce
   }
 
   goToPublic = () => {
     this.setState({
       jobView: 'public'
     });
-<<<<<<< HEAD
     console.log(this.state.jobView);
-=======
->>>>>>> b6c3c3e7cd20c8228335773e02908bdd974c7dce
   }
 
   render() {
@@ -124,11 +118,7 @@ class Jobs extends Component {
           <h3 className="text-left p-4" >Hello, {username} !</h3>
             <h1 className="text-center p-3" >Your Dashboard</h1>
             <div className="DashButton">
-<<<<<<< HEAD
               <Button color="link" onClick={() => this.goToMyJob()}>MY Jobs</Button>
-=======
-              <Button color="link" outline onClick={() => this.goToMyJob()}>MY Jobs</Button>
->>>>>>> b6c3c3e7cd20c8228335773e02908bdd974c7dce
             </div>
             <div className="DashButton">
               <Button color="link" onClick={() => this.goToPublic()}>PUBLIC</Button>
@@ -153,11 +143,8 @@ class Jobs extends Component {
                         </Col>
                           <Col className="ml-auto">
                             <Row className="h-100 justify-content-end align-items-center">
-<<<<<<< HEAD
                               {
                                 job.uid === uid &&
-=======
->>>>>>> b6c3c3e7cd20c8228335773e02908bdd974c7dce
                                 <Button
                                   className="mx-2"
                                   color="warning"
@@ -166,12 +153,9 @@ class Jobs extends Component {
                                 >
                                   Edit
                                 </Button>
-<<<<<<< HEAD
                               }
                               {
                                 job.uid === uid &&
-=======
->>>>>>> b6c3c3e7cd20c8228335773e02908bdd974c7dce
                                 <Button
                                   className="mx-2"
                                   color="danger"
@@ -180,10 +164,7 @@ class Jobs extends Component {
                                 >
                                   Remove
                                 </Button>
-<<<<<<< HEAD
                               }
-=======
->>>>>>> b6c3c3e7cd20c8228335773e02908bdd974c7dce
                               <a href={getCalendarLink(job)} target="_blank">
                               <Button
                                 className="mx-2"
@@ -219,11 +200,7 @@ class Jobs extends Component {
               <Button color="link" onClick={() => this.goToMyJob()}>MY Jobs</Button>
             </div>
             <div className="DashButton">
-<<<<<<< HEAD
               <Button color="link" onClick={() => this.goToPublic()}>PUBLIC</Button>
-=======
-              <Button color="link" outline onClick={() => this.goToPublic()}>PUBLIC</Button>
->>>>>>> b6c3c3e7cd20c8228335773e02908bdd974c7dce
             </div>
             {
               status === 'error' &&
@@ -245,7 +222,6 @@ class Jobs extends Component {
                         </Col>
                           <Col className="ml-auto">
                             <Row className="h-100 justify-content-end align-items-center">
-<<<<<<< HEAD
                               {
                                 job.uid === uid &&
                                 <Button
@@ -268,8 +244,6 @@ class Jobs extends Component {
                                   Remove
                                 </Button>
                               }
-=======
->>>>>>> b6c3c3e7cd20c8228335773e02908bdd974c7dce
                               <a href={getCalendarLink(job)} target="_blank">
                               <Button
                                 className="mx-2"
