@@ -182,17 +182,20 @@ class Auth extends Component {
           </Row>
           <Button
             className="my-3"
-
+            
             disabled={disabled}
             onClick={this.handleFormSubmit}
             block
           >
             Submit
           </Button>
+          <div  id="signin">
           <div id="signin">
             <script type="in/Login" id="linkedin_button"></script>
           </div>
+          </div>
         </Form>
+        
       </div>
     );
   }
