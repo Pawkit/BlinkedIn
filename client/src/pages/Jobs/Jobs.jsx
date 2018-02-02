@@ -28,6 +28,7 @@ class Jobs extends Component {
     status: 'loading',
     jobs: [],
     message: '',
+    jobView: 'myJob'
   }
 
   componentDidMount() {
@@ -86,6 +87,21 @@ class Jobs extends Component {
         });
       });
   }
+
+  goToMyJob = () => {
+    this.setState({
+      jobView: 'myJob'
+    });
+    console.log(this.state.jobView);
+  }
+
+  goToPublic = () => {
+    this.setState({
+      jobView: 'public'
+    });
+    console.log(this.state.jobView);
+  }
+
   render() {
     const { jobs, status, message } = this.state;
     const { uid } = this.props.auth;
@@ -93,78 +109,164 @@ class Jobs extends Component {
     // console.log('props:',this.props.auth.uid)
     // console.log('jobs:', jobs);
 
-    return (
-      <div className="full-content">
-        <Nav />
-        <JobModal />
-        <Container className="jobPanel p-3 my-4">
-        <h3 className="text-left p-4" >Hello, {username} !</h3>
-          <h1 className="text-center p-3" >Your Dashboard</h1>
-          <DashButton text='my jobs' />
-          <DashButton text='public' />
-          {
-            status === 'error' &&
-            <p>{message}</p>
-          }
-          {
-            jobs.map(job => (
-              // {state.params.uid === job.uid ?  }
-              <Card key={Math.random()} className="my-2">
-                <CardHeader>
-                  <Row>
-                    <Col>
-                      <CardTitle>{job.title}
-                      </CardTitle>
-                      <CardSubtitle><a href={job.link} target="_blank">{job.company}</a></CardSubtitle>
-                      <CardSubtitle>
-                      </CardSubtitle>
-                    </Col>
-                      <Col className="ml-auto">
-                        <Row className="h-100 justify-content-end align-items-center">
-                          {
-                            job.uid === uid &&
-                            <Button
-                              className="mx-2"
-                              color="warning"
-                              onClick={() => this.onEdit(job)}
-                              disabled={status === 'saving'}
-                            >
-                              Edit
-                            </Button>
-                          }
-                          {
-                            job.uid === uid &&
-                            <Button
-                              className="mx-2"
-                              color="danger"
-                              onClick={() => this.onRemove(job)}
-                              disabled={status === 'saving'}
-                            >
-                              Remove
-                            </Button>
-                          }
-                          <a href={getCalendarLink(job)} target="_blank">
-                          <Button
-                            className="mx-2"
-                            onClick={() => {return false;}}
-                            color="success"
-                          >
-                            Add to calendar
-                          </Button>
-                          </a>
+    if (this.state.jobView === 'myJob'){
+      return (
+        <div className="full-content">
+          <Nav />
+          <JobModal />
+          <Container className="jobPanel p-3 my-4">
+          <h3 className="text-left p-4" >Hello, {username} !</h3>
+            <h1 className="text-center p-3" >Your Dashboard</h1>
+            <div className="DashButton">
+              <Button color="link" onClick={() => this.goToMyJob()}>MY Jobs</Button>
+            </div>
+            <div className="DashButton">
+              <Button color="link" onClick={() => this.goToPublic()}>PUBLIC</Button>
+            </div>
+            {
+              status === 'error' &&
+              <p>{message}</p>
+            }
+            {
+                jobs.map(job => (
+                  job.uid === uid &&
+                  // {state.params.uid === job.uid ?  }
+                  <Card key={Math.random()} className="my-2">
+                    <CardHeader>
+                      <Row>
+                        <Col>
+                          <CardTitle>{job.title}
+                          </CardTitle>
+                          <CardSubtitle><a href={job.link} target="_blank">{job.company}</a></CardSubtitle>
+                          <CardSubtitle>
+                          </CardSubtitle>
+                        </Col>
+                          <Col className="ml-auto">
+                            <Row className="h-100 justify-content-end align-items-center">
+                              {
+                                job.uid === uid &&
+                                <Button
+                                  className="mx-2"
+                                  color="warning"
+                                  onClick={() => this.onEdit(job)}
+                                  disabled={status === 'saving'}
+                                >
+                                  Edit
+                                </Button>
+                              }
+                              {
+                                job.uid === uid &&
+                                <Button
+                                  className="mx-2"
+                                  color="danger"
+                                  onClick={() => this.onRemove(job)}
+                                  disabled={status === 'saving'}
+                                >
+                                  Remove
+                                </Button>
+                              }
+                              <a href={getCalendarLink(job)} target="_blank">
+                              <Button
+                                className="mx-2"
+                                onClick={() => {return false;}}
+                                color="success"
+                              >
+                                Add to calendar
+                              </Button>
+                              </a>
+                            </Row>
+                          </Col>
                         </Row>
-                      </Col>
-                                                    </Row>
-                </CardHeader>
-                <CardBody>
-                  <CardText>{job.notes}</CardText>
-                </CardBody>
-              </Card>
-            ))
-          }
-        </Container>
-      </div>
-    );
+                    </CardHeader>
+                    <CardBody>
+                      <CardText>{job.notes}</CardText>
+                    </CardBody>
+                  </Card>
+                ))
+              }
+          </Container>
+        </div>
+      );
+    }
+    if (this.state.jobView === 'public'){
+      return (
+        <div className="full-content">
+          <Nav />
+          <JobModal />
+          <Container className="jobPanel p-3 my-4">
+          <h3 className="text-left p-4" >Hello, {username} !</h3>
+            <h1 className="text-center p-3" >Your Dashboard</h1>
+            <div className="DashButton">
+              <Button color="link" onClick={() => this.goToMyJob()}>MY Jobs</Button>
+            </div>
+            <div className="DashButton">
+              <Button color="link" onClick={() => this.goToPublic()}>PUBLIC</Button>
+            </div>
+            {
+              status === 'error' &&
+              <p>{message}</p>
+            }
+            {
+                jobs.map(job => (
+                  job.uid !== uid &&
+                  // {state.params.uid === job.uid ?  }
+                  <Card key={Math.random()} className="my-2">
+                    <CardHeader>
+                      <Row>
+                        <Col>
+                          <CardTitle>{job.title}
+                          </CardTitle>
+                          <CardSubtitle><a href={job.link} target="_blank">{job.company}</a></CardSubtitle>
+                          <CardSubtitle>
+                          </CardSubtitle>
+                        </Col>
+                          <Col className="ml-auto">
+                            <Row className="h-100 justify-content-end align-items-center">
+                              {
+                                job.uid === uid &&
+                                <Button
+                                  className="mx-2"
+                                  color="warning"
+                                  onClick={() => this.onEdit(job)}
+                                  disabled={status === 'saving'}
+                                >
+                                  Edit
+                                </Button>
+                              }
+                              {
+                                job.uid === uid &&
+                                <Button
+                                  className="mx-2"
+                                  color="danger"
+                                  onClick={() => this.onRemove(job)}
+                                  disabled={status === 'saving'}
+                                >
+                                  Remove
+                                </Button>
+                              }
+                              <a href={getCalendarLink(job)} target="_blank">
+                              <Button
+                                className="mx-2"
+                                onClick={() => {return false;}}
+                                color="success"
+                              >
+                                Add to calendar
+                              </Button>
+                              </a>
+                            </Row>
+                          </Col>
+                        </Row>
+                    </CardHeader>
+                    <CardBody>
+                      <CardText>{job.notes}</CardText>
+                    </CardBody>
+                  </Card>
+                ))
+              }
+          </Container>
+        </div>
+      );
+    }
   }
 }
 
