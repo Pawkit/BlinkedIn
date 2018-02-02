@@ -21,7 +21,7 @@ export default {
   saveJob: jobInfo => axios.put(`/api/jobs/${jobInfo._id}`, jobInfo),
 
   //add upvotes
-  updateJob: id => axios.put(`/apt/jobs/${id}`),
+  updateJob: (id, jobInfo) => axios.put(`/api/jobs/${id}`, jobInfo),
 
 
   /**

@@ -82,14 +82,15 @@ class Jobs extends Component {
       });
   }
 
-  handleClick(id) {
-    API.updateJob(id)
+  handleClick(job) {
+    job.points += 1;
+    API.updateJob(job._id, job)
       .then( res => {
       console.log(res.data);
-    this.setState({
-      count: this.state.count + 1
-  })
-})
+      this.setState({
+        count: this.state.count + 1
+      })
+    })
 }
 
 
@@ -97,7 +98,7 @@ class Jobs extends Component {
 //then in res of updatejobs you want to use the saved of upvotes and increment it by 1
 //get the upvote in state and store it in the backend
 //get and put post function
- 
+
 
 
 
@@ -149,7 +150,7 @@ class Jobs extends Component {
                     }
                     <Button
                       className="mx-2"
-                      onClick={() => this.handleClick(job._id)}
+                      onClick={() => this.handleClick(job)}
                       color="success"
                     >
                       Upvote
@@ -161,6 +162,7 @@ class Jobs extends Component {
                     >
                       Downvote
                     </Button>
+                    <span>{job.points}</span>
                   </Row>
                 </CardHeader>
                 <CardBody>
