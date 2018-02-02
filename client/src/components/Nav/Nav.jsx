@@ -55,6 +55,7 @@ class Header extends React.PureComponent {
             </Switch>
           </Collapse>
         </Navbar>
+        </Navbar>
       </Container>
     );
   }

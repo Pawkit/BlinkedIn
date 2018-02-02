@@ -3,3 +3,59 @@
   border: 1px solid #d8762655;
   box-shadow: 0 3px 5px #e7494415;
 }
+
+
+ /* dashboard */
+ .text-center.p-3 {letter-spacing: .13em;height: 55px;font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;text-transform: uppercase;font-size: 25px !important;margin-bottom: .8em;color: #433a3b;font-weight: 700;}
+ .card-title {font-size:1.6em;font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;color: #433a3b;}
+ .card-subtitle{color:#e06245;}
+ .card-body {font-family: ff-tisa-web-pro,Georgia,Times,"Times New Roman",serif !important;}
+ 
+ /* job created form & button  */
+ .custom-select.is-valid, .form-control.is-valid, .was-validated .custom-select:valid, .was-validated .form-control:valid {
+   border-color: #a46799;
+ }
+ .form-control {
+   transition: none !important;
+   border: 1px solid #544f77 !important;
+ }
+ .btn-primary, .btn-secondary{
+   background: #a46799 !important;
+   color:#fff;
+   border-radius: 100px;
+   letter-spacing: 0.2em;
+   font-family: "sofia-pro", sans-serif;
+   border: none !important;
+ }
+ .btn-primary:hover, .btn-secondary:hover {
+   border: none !important;
+   text-decoration: none;
+   background: #ff907f !important;
+   color: white;
+   box-shadow: non !important;
+ }
+ .btn-primary.focus, .btn-secondary.focus {
+   border: none !important;
+   text-decoration: none;
+   box-shadow: none !important;
+ }
+ .btn-primary.disabled, btn-secondary.disabled {
+   border: none !important;
+   box-shadow: none !important;
+ }
+ .btn:not(:disabled):not(.disabled) {
+   border: none !important;
+ }
+ .btn {border: none; box-shadow: none !important;}
+ a {
+   box-shadow: none !important;
+ }
+ .my-2.is-valid.form-control {box-shadow: none !important;}
+ /* edit /delete /google button */
+ /* .mx-2.btn.btn-warning, .mx-2.btn.btn-danger,.mx-2.btn.btn-success {
+   background: #e06245 !important;
+   color: #eeeddf !important;
+ }
+ .mx-2.btn.btn-warning:hover, .mx-2.btn.btn-danger:hover,.mx-2.btn.btn-success:hover {
+   background: #433a3b !important;
+   color: #eeeddf !important; */
