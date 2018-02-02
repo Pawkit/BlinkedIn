@@ -92,14 +92,12 @@ class Jobs extends Component {
     this.setState({
       jobView: 'myJob'
     });
-    console.log(this.state.jobView);
   }
 
   goToPublic = () => {
     this.setState({
       jobView: 'public'
     });
-    console.log(this.state.jobView);
   }
 
   render() {
@@ -118,7 +116,7 @@ class Jobs extends Component {
           <h3 className="text-left p-4" >Hello, {username} !</h3>
             <h1 className="text-center p-3" >Your Dashboard</h1>
             <div className="DashButton">
-              <Button color="link" onClick={() => this.goToMyJob()}>MY Jobs</Button>
+              <Button color="link" outline onClick={() => this.goToMyJob()}>MY Jobs</Button>
             </div>
             <div className="DashButton">
               <Button color="link" onClick={() => this.goToPublic()}>PUBLIC</Button>
@@ -194,7 +192,7 @@ class Jobs extends Component {
               <Button color="link" onClick={() => this.goToMyJob()}>MY Jobs</Button>
             </div>
             <div className="DashButton">
-              <Button color="link" onClick={() => this.goToPublic()}>PUBLIC</Button>
+              <Button color="link" outline onClick={() => this.goToPublic()}>PUBLIC</Button>
             </div>
             {
               status === 'error' &&
