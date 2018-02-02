@@ -9,7 +9,7 @@ import swal from 'sweetalert2';
 import Nav from '../../components/Nav';
 import JobModal from '../../modals/Job';
 import API from '../../utils/API';
-// import { getCalendarLink } from '../../utils/gcal';
+import { getCalendarLink } from '../../utils/gcal';
 
 import { showModal, hideModal } from '../../actions';
 
@@ -103,6 +103,15 @@ class Jobs extends Component {
                     </Col>
                     <Col className="ml-auto">
                       <Row className="h-100 justify-content-end align-items-center">
+                      <a href={getCalendarLink(job)} target="_blank">
+                           <Button
+                             className="mx-2"
+                             onClick={() => {return false;}}
+                             color="success"
+                           >
+                             Add to calendar
+                           </Button>
+                           </a>
                         <Button
                           className="mx-2"
                           color="success"
