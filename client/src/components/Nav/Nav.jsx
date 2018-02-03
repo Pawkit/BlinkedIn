@@ -37,6 +37,7 @@ class Header extends React.PureComponent {
   render() {
     return (
       <Container className="p-0">
+        <Navbar className="fixed-top" color="dark" dark expand="md" >
         <Navbar color="dark" dark expand="md" >
           <NavbarBrand href="/">Blinked In</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
@@ -53,6 +54,7 @@ class Header extends React.PureComponent {
               />
             </Switch>
           </Collapse>
+        </Navbar>
         </Navbar>
       </Container>
     );

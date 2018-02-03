@@ -28,6 +28,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByUid: function(req, res) {
+    db.Job
+      .find({uid: req.params.uid})
+      .sort({ date: -1 })
+      .then(dbModel => res.json({ jobs: dbModel }))
+      .catch(err => res.status(422).json(err));
+  },
   remove: function(req, res) {
     db.Job
       .findById({ _id: req.params.id })
