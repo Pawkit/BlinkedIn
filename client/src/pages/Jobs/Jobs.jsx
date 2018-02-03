@@ -102,6 +102,7 @@ class Jobs extends Component {
   render() {
     const { jobs, status, message } = this.state;
     const { showModal } = this.props;
+    const { uid } = this.props.auth;
 
     return (
       <div className="full-content">
