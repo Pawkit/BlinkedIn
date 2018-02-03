@@ -18,8 +18,8 @@ const jobSchema = new Schema({
   qualifications: String,
   benifits: String,
   salary: { type: Number, required: true },
-  notes: String,
-  lastUpdate: { type: Date, default: new Date() }
+  notes: { type: String, required: true},
+  points: { type: Number, default: 0 }
 });
 
 const Job = mongoose.model("Job", jobSchema);

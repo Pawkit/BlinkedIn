@@ -17,5 +17,8 @@ router
 router
   .route("/uid/:uid")
   .get(jobsController.findByUid)
+router.route("/upvote/:id")
+  .post(jobsController.incrementUpvote);
+//router.route("/downvote/:id", post(jobsController.incrementDownvote);
 
 module.exports = router;
