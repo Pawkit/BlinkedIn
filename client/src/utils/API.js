@@ -20,8 +20,8 @@ export default {
   // Saves a job to the database
   saveJob: jobInfo => axios.put(`/api/jobs/${jobInfo._id}`, jobInfo),
 
-  // add upvotes
-  // updateJob: (id, jobInfo) => axios.put('/api/jobs/${id}',jobInfo),
+  //add upvotes
+  updateJob: (id, jobInfo) => axios.put(`/api/jobs/${id}`, jobInfo),
   /**
    * User API
    */

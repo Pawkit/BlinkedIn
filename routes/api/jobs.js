@@ -13,4 +13,9 @@ router
   .put(jobsController.update)
   .delete(jobsController.remove);
 
+// Matches with "/api/jobs/uid/:id"
+router
+  .route("/uid/:uid")
+  .get(jobsController.findByUid)
+
 module.exports = router;

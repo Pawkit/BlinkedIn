@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import DashButton from '../../components/ButtonNav'
 import { Container, Card, CardTitle, CardSubtitle, CardText, Button, CardHeader, CardBody, Row, Col } from 'reactstrap';
 import swal from 'sweetalert2';
 
@@ -28,7 +27,8 @@ class Jobs extends Component {
     status: 'loading',
     jobs: [],
     message: '',
-    jobView: 'myJob'
+    jobView: 'myJob',
+    count: 0
   }
 
   componentDidMount() {
@@ -137,7 +137,17 @@ class Jobs extends Component {
       jobView: 'public'
     });
   }
-
+  // upvote
+  handleClick(job) {
+      job.points += 1;
+      API.updateJob(job._id, job)
+        .then( res => {
+        console.log(res.data);
+        this.setState({
+          count: this.state.count + 1
+        })
+      })
+  }
   render() {
     const { jobs, status, message } = this.state;
     const { uid } = this.props.auth;
@@ -219,7 +229,7 @@ class Jobs extends Component {
                     </CardBody>
                   </Card>
                 ))
-              }
+            }
           </Container>
         </div>
       );
@@ -275,6 +285,14 @@ class Jobs extends Component {
                                 Add to calendar
                               </Button>
                               </a>
+                              <Button
+                                className="mx-2"
+                                onClick={() => this.handleClick(job)}
+                                color="success"
+                               >
+                                 Like
+                               </Button>
+                                <span>{job.points}</span>
                             </Row>
                           </Col>
                         </Row>
