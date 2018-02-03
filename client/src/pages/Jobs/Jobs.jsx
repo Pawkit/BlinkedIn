@@ -79,8 +79,8 @@ class Jobs extends Component {
       });
   }
 
-  handleClick(job) {
-    job.points += 1;
+  handleClick(job, increment) {
+    job.points += increment;
     API.updateJob(job._id, job)
       .then( res => {
       console.log(res.data);
@@ -158,55 +158,23 @@ class Jobs extends Component {
                         >
                           Remove
                         </Button>
+                        <Button
+                          className="mx-2"
+                          onClick={() => this.handleClick(job, 1)}
+                          color="success"
+                        >
+                          Like
+                        </Button>
+                        <Button
+                          className="mx-2"
+                          onClick={() => this.handleClick(job, -1)}
+                          color="success"
+                        >
+                          Dislike
+                        </Button>
+                        <span>{job.points}</span>
                       </Row>
                     </Col>
-                    {
-                      job.uid === uid &&
-                      <Col className="ml-auto">
-                        <Row className="h-100 justify-content-end align-items-center">
-                          <a href={getCalendarLink(job)} target="_blank">
-                          <Button
-                            className="mx-2"
-                            onClick={() => {return false;}}
-                            color="success"
-                          >
-                            Add to calendar
-                          </Button>
-                          </a>
-                          <Button
-                            className="mx-2"
-                            color="warning"
-                            onClick={() => this.onEdit(job)}
-                            disabled={status === 'saving'}
-                          >
-                            Edit
-                          </Button>
-                          <Button
-                            className="mx-2"
-                            color="danger"
-                            onClick={() => this.onRemove(job)}
-                            disabled={status === 'saving'}
-                          >
-                            Remove
-                          </Button>
-                        </Row>
-                      </Col>
-                    }
-                    <Button
-                      className="mx-2"
-                      onClick={() => this.handleClick(job)}
-                      color="success"
-                    >
-                      Upvote
-                    </Button>
-                    <Button
-                      className="mx-2"
-                      onClick={() => {return false;}}
-                      color="success"
-                    >
-                      Downvote
-                    </Button>
-                    <span>{job.points}</span>
                   </Row>
                 </CardHeader>
                 <CardBody>
