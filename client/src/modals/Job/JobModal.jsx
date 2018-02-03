@@ -162,23 +162,23 @@ class JobModal extends React.PureComponent {
       submitted,
     } = this.state;
     const {
-      title,
-      dateApplied,
+      title = '',
+      dateApplied = new Date(),
       companyName = '',
       companyContact = '',
       companyWebsite = '',
       companyFacts = '',
       jobRequirements = '',
       jobResponsibilities = '',
-      callBack,
-      interview,
-      dateInterview,
+      callBack = false,
+      interview = false,
+      dateInterview = new Date(),
       nameOfInterviewer = '',
       qualifications = '',
       benifits = '',
-      salary,
-      notes,
-      lastUpdate,
+      salary = 0,
+      notes = '',
+      lastUpdate = new Date(),
     } = job;
 
     const viewmode = type === 'view';
