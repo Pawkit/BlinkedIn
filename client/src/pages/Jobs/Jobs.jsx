@@ -88,18 +88,54 @@ class Jobs extends Component {
       });
   }
 
+  addToMyJob = (job) => {
+    const {
+      type,
+      _id,
+      title,
+      company,
+      link,
+      salary,
+      notes,
+    } = this.state;
+
+    this.setState({
+      status: 'saving',
+    }, () => {
+
+        API.createJob({
+          title: job.title,
+          company: job.company,
+          link: job.link,
+          salary: job.salary,
+          notes: job.notes,
+          uid: this.props.auth.uid,
+        }).then((res) => {
+          this.setState({
+            status: 'success',
+            isOpen: false,
+          });
+          this.props.hideModal({ status: 'success' });
+        }).catch((err) => {
+          this.setState({
+            status: 'error',
+            submitted: true,
+            message: err.errorMessage,
+          });
+        });
+    });
+  }
+
   goToMyJob = () => {
     this.setState({
       jobView: 'myJob'
     });
-    console.log(this.state.jobView);
   }
 
   goToPublic = () => {
     this.setState({
       jobView: 'public'
     });
-    console.log(this.state.jobView);
   }
 
   render() {
@@ -222,28 +258,14 @@ class Jobs extends Component {
                         </Col>
                           <Col className="ml-auto">
                             <Row className="h-100 justify-content-end align-items-center">
-                              {
-                                job.uid === uid &&
-                                <Button
-                                  className="mx-2"
-                                  color="warning"
-                                  onClick={() => this.onEdit(job)}
-                                  disabled={status === 'saving'}
-                                >
-                                  Edit
-                                </Button>
-                              }
-                              {
-                                job.uid === uid &&
-                                <Button
-                                  className="mx-2"
-                                  color="danger"
-                                  onClick={() => this.onRemove(job)}
-                                  disabled={status === 'saving'}
-                                >
-                                  Remove
-                                </Button>
-                              }
+                              <Button
+                                className="mx-2"
+                                color="danger"
+                                onClick={() => this.addToMyJob(job)}
+                                disabled={status === 'saving'}
+                              >
+                              Add To My Job
+                              </Button>
                               <a href={getCalendarLink(job)} target="_blank">
                               <Button
                                 className="mx-2"
