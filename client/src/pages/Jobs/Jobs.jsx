@@ -88,6 +88,44 @@ class Jobs extends Component {
       });
   }
 
+  addToMyJob = (job) => {
+    const {
+      type,
+      _id,
+      title,
+      company,
+      link,
+      salary,
+      notes,
+    } = this.state;
+
+    this.setState({
+      status: 'saving',
+    }, () => {
+      
+        API.createJob({
+          title: job.title,
+          company: job.company,
+          link: job.link,
+          salary: job.salary,
+          notes: job.notes,
+          uid: this.props.auth.uid,
+        }).then((res) => {
+          this.setState({
+            status: 'success',
+            isOpen: false,
+          });
+          this.props.hideModal({ status: 'success' });
+        }).catch((err) => {
+          this.setState({
+            status: 'error',
+            submitted: true,
+            message: err.errorMessage,
+          });
+        });
+    });
+  }
+
   goToMyJob = () => {
     this.setState({
       jobView: 'myJob'
@@ -214,6 +252,14 @@ class Jobs extends Component {
                         </Col>
                           <Col className="ml-auto">
                             <Row className="h-100 justify-content-end align-items-center">
+                              <Button
+                                className="mx-2"
+                                color="danger"
+                                onClick={() => this.addToMyJob(job)}
+                                disabled={status === 'saving'}
+                              >
+                              Add To My Job
+                              </Button>
                               <a href={getCalendarLink(job)} target="_blank">
                               <Button
                                 className="mx-2"
