@@ -13,6 +13,9 @@ router
   .put(jobsController.update)
   .delete(jobsController.remove);
 
+router.route("/upvote/:id")
+  .post(jobsController.incrementUpvote);
+//router.route("/downvote/:id", post(jobsController.incrementDownvote);
 // Matches with "/api/jobs/uid/:id"
 router
   .route("/uid/:uid")

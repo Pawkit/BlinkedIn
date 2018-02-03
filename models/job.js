@@ -18,6 +18,7 @@ const jobSchema = new Schema({
   qualifications: String,
   benifits: String,
   salary: { type: Number, required: true },
+  points: { type: Number, default: 0 },
   notes: String,
   lastUpdate: { type: Date, default: new Date() }
 });
