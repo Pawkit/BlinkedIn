@@ -305,7 +305,7 @@ class JobModal extends React.PureComponent {
                 id="companyContact"
                 type="text"
                 name="companyContact"
-                placeholder="Comapny contact"
+                placeholder="Company contact"
                 value={companyContact}
                 valid={companyContact.length !== 0 || !submitted}
                 onChange={this.handleInputChange}
