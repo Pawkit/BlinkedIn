@@ -41,5 +41,11 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  incrementUpvote: function(req, res) {
+    db.Job
+      .findOneAndUpdate({ _id: req.params.id})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+    }
 };

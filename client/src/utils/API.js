@@ -8,6 +8,9 @@ export default {
   // Gets all jobs
   getJobs: () => axios.get('/api/jobs'),
 
+  // Get my Jobs
+  getMyJobs: uid => axios.get(`/api/jobs/uid/${uid}`),
+
   // Create a job
   createJob: jobInfo => axios.post('/api/jobs', jobInfo),
 

@@ -41,14 +41,13 @@ class Jobs extends Component {
     }
   }
 
-  like = (job) => {
-
-  }
-
   onEdit = (job) => {
     this.props.showModal({ type: 'editJob', job });
   }
 
+  onView = (job) => {
+    this.props.showModal({ type: 'viewJob', job});
+  }
   onRemove = (job) => {
     swal({
       title: 'Do you really want to remove this Job?',
@@ -73,7 +72,7 @@ class Jobs extends Component {
   }
 
   loadJobs = () => {
-    API.getJobs()
+    API.getJobs(this.props.auth.uid)
       .then((res) => {
         this.setState({
           status: 'idle',
@@ -137,17 +136,16 @@ class Jobs extends Component {
       jobView: 'public'
     });
   }
-  // upvote
   handleClick(job, increment) {
-      job.points += increment;
-      API.updateJob(job._id, job)
-        .then( res => {
-        console.log(res.data);
-        this.setState({
-          count: this.state.count + 1
-        })
+    job.points += increment;
+    API.updateJob(job._id, job)
+      .then( res => {
+      console.log(res.data);
+      this.setState({
+        count: this.state.count + 1
       })
-  }
+    })
+}
   render() {
     const { jobs, status, message } = this.state;
     const { uid } = this.props.auth;
@@ -220,6 +218,14 @@ class Jobs extends Component {
                                 Add to calendar
                               </Button>
                               </a>
+                              <Button
+                                className="mx-2"
+                                color="success"
+                                onClick={() => this.onView(job)}
+                                disabled={status === 'saving'}
+                              >
+                                View
+                              </Button>
                             </Row>
                           </Col>
                         </Row>
@@ -285,6 +291,14 @@ class Jobs extends Component {
                                 Add to calendar
                               </Button>
                               </a>
+                              <Button
+                                className="mx-2"
+                                color="success"
+                                onClick={() => showModal({ type: 'viewJob', job })}
+                                disabled={status === 'saving'}
+                              >
+                                View
+                              </Button>
                               <Button
                                 className="mx-2"
                                 onClick={() => this.handleClick(job, 1)}
