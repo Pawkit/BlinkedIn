@@ -138,8 +138,8 @@ class Jobs extends Component {
     });
   }
   // upvote
-  handleClick(job) {
-      job.points += 1;
+  handleClick(job, increment) {
+      job.points += increment;
       API.updateJob(job._id, job)
         .then( res => {
         console.log(res.data);
@@ -287,11 +287,18 @@ class Jobs extends Component {
                               </a>
                               <Button
                                 className="mx-2"
-                                onClick={() => this.handleClick(job)}
+                                onClick={() => this.handleClick(job, 1)}
                                 color="success"
                                >
                                  Like
                                </Button>
+                               <Button
+                                 className="mx-2"
+                                 onClick={() => this.handleClick(job, -1)}
+                                 color="success"
+                                >
+                                  Dislike
+                                </Button>
                                 <span>{job.points}</span>
                             </Row>
                           </Col>
